@@ -17,6 +17,42 @@
   <p>Potencia: {{ power }}HP</p>
   {{ mensaje.title }}
   {{ mensaje.text }}
+  <hr />
+  <p>Potencias urbanas (menor a 300HP):</p>
+  <ul>
+    <!-- <li v-for="(power,index) of powers" :key="index">
+      <span v-if="power < 300">
+        {{power}}
+      </span>
+    </li> -->
+    <template v-for="(power, index) of powers" :key="index">
+      <li v-if="power < 300">
+        {{ power }}
+      </li>
+    </template>
+  </ul>
+  <p>Potencias de carreras (mayores a 300HP):</p>
+  <ul>
+    <!-- <li v-for="(power,index) of powers" :key="index">
+      <span v-if="power >= 300">
+        {{power}}
+      </span>
+    </li> -->
+    <template v-for="(power, index) of powers" :key="index">
+      <li v-if="power >= 300">
+        {{ power }}
+      </li>
+    </template>
+    <hr />
+    <h2>Potencias:</h2>
+    <ul>
+      <template v-for="(power, index) of powers" :key="index">
+        <li v-if="power < 280">Urbana: {{power}}HP</li>
+        <li v-else-if="power === 280">Híbrida: {{power}}HP</li>
+        <li v-else>Carreras: {{power}}HP</li>
+      </template>
+    </ul>
+  </ul>
 </template>
 
 <script>
@@ -43,6 +79,7 @@ export default {
     const colors = ["Azul", "Morado", "Marrón", "Amarillo"];
     const price = 45000;
     const power = 240;
+    const powers = [60, 80, 120, 160, 200, 280, 300, 390, 540, 500];
     const mensaje = {
       title: "Estoy bien",
       text: "Welcome",
@@ -55,6 +92,7 @@ export default {
       price,
       power,
       mensaje,
+      powers,
     };
   },
 };
