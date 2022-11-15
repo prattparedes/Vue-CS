@@ -2,7 +2,17 @@
   <h2>Coche</h2>
   <p>Marca: {{ brand }}</p>
   <p>Modelo: {{ model }}</p>
-  <p>Color: {{ color[1] }}</p>
+  <p>
+    Color:
+    <!-- <span v-for="(color, index) in colors" :key="index">
+      {{ index }}: {{ color }} -
+    </span> -->
+  </p>
+  <ul>
+    <li v-for="(color, index) in colors" :key="index">
+      {{ index }}: {{ color }}
+    </li>
+  </ul>
   <p>Precio: {{ price }}$</p>
   <p>Potencia: {{ power }}HP</p>
   {{ mensaje.title }}
@@ -30,21 +40,21 @@ export default {
   setup() {
     const brand = "Audi";
     const model = "A4";
-    const color = ["Azul", "Morado", "Marrón"];
+    const colors = ["Azul", "Morado", "Marrón", "Amarillo"];
     const price = 45000;
     const power = 240;
     const mensaje = {
       title: "Estoy bien",
       text: "Welcome",
-    }
+    };
 
     return {
       brand,
       model,
-      color,
+      colors,
       price,
       power,
-      mensaje
+      mensaje,
     };
   },
 };
