@@ -1,24 +1,42 @@
 <template lang="">
   <div>
     <h1>VueJS</h1>
-    <car-comp></car-comp>
+    <CarProps :power="power" :upPower="upPower" />
+    <!-- <car-comp></car-comp>
     <hr>
     <CarOpt/>
     <hr>
-    <CarCom/>
+    <CarCom/> -->
   </div>
 </template>
 
 <script>
-import CarComp from "./components/CarComp.vue";
-import CarOpt from "./components/CarOpt.vue";
-import CarCom from "./components/CarCom.vue";
+import { ref } from "vue";
+
+import CarProps from "./components/CarProps.vue";
+// import CarComp from "./components/CarComp.vue";
+// import CarOpt from "./components/CarOpt.vue";
+// import CarCom from "./components/CarCom.vue";
 
 export default {
   components: {
-    CarComp,
-    CarOpt,
-    CarCom,
+    CarProps,
+    // CarComp,
+    // CarOpt,
+    // CarCom,
+  },
+  setup() {
+    let power = ref(45);
+
+    const upPower = () => {
+      console.log("aumentar power...");
+      power.value++;
+      console.log(power);
+    };
+    return {
+      power,
+      upPower,
+    };
   },
 };
 </script>
