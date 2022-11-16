@@ -1,7 +1,7 @@
 <template lang="">
   <div>
     <h1>VueJS</h1>
-    <CarProps :power="power" :upPower="upPower" />
+    <CarProps :power="power" :upPower="upPower" @downPower="downPower" />
     <!-- <car-comp></car-comp>
     <hr>
     <CarOpt/>
@@ -29,13 +29,17 @@ export default {
     let power = ref(45);
 
     const upPower = () => {
-      console.log("aumentar power...");
       power.value++;
-      console.log(power);
     };
+
+    const downPower = () => {
+      power.value--;
+    }
+
     return {
       power,
       upPower,
+      downPower
     };
   },
 };
